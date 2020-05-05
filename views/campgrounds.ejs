@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+
+
+<div class="container">
+    <header class="jumbotron">
+         <h1>WELCOME TO YELPCAMP</h1>
+         <p> View our hand-picked camps around the globe</p>  
+         <p>
+             <a class="btn btn-primary btn-lg" href="/campgrounds/new">ADD NEW CAMPGROUNDS HERE</a>
+         </p>  
+    </header>
+
+     <div class="row text-center " style="display :flex;flex-wrap: wrap;">
+        <% anyname.forEach(function(element){ %>
+             <div class="col-md-3 col-sm-6">
+                 <div class="thumbnail">
+                    <img src="<%= element.image %>">
+                 </div >
+                 <div class="caption">
+                    <h4><%= element.title %> </h4> 
+                 </div>
+             
+             </div> 
+        <%});%>
+     </div>
+</div>
+
+<%- include("partials/footer") %> 
