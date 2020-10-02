@@ -33,20 +33,18 @@ router.post("/register",(req,res)=>{
 
 //show login form
 router.get("/login",(req,res)=>{
-    //res.render("login",{"success":"Welcome back"});
-    //return res.render("login",{"success":"Welcome back"});
-      res.render("login");
+        res.render("login");
 })
 //app.post("login",middleware,callback();
-router.post("/login",passport.authenticate("local",
+router.post("/login",(req,res,next)=>{
+    passport.authenticate("local",
 {
        successRedirect:"/campgrounds" ,
        failureRedirect : "/login",
-       //successFlash: true
-       
-       
-}),(req,res)=>{
-});;
+       successFlash: "Welcome  " + req.body.username +"!!",
+       failureFlash : true    
+}) (req,res);
+});
 
 //logout route
 router.get("/logout",(req,res)=>{
