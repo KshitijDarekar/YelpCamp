@@ -40,7 +40,19 @@ app.use((req,res,next)=>{
     next();
 });
 
-mongoose.connect("mongodb://localhost:27017/yelpcamp",{ useNewUrlParser: true, useUnifiedTopology: true });
+// local mongodb setup
+//mongoose.connect("mongodb://localhost:27017/yelpcamp",{ useNewUrlParser: true, useUnifiedTopology: true });
+
+const url = process.env.DATABASEURL || "mongodb://localhost:27017/yelpcamp" ;
+// Mongodb Atlas Setup (Cloud)
+mongoose.connect(url,
+{ useNewUrlParser: true, useUnifiedTopology: true 
+}).then( ()=>{
+    console.log("Connected to DB!");
+}).catch( err=>{
+    console.log("Error :",err.message);
+});
+
 
 
 
@@ -212,6 +224,6 @@ app.use(campgroundRoutes);
 app.use(commentRoutes);
 
 
-app.listen(5000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("THe Yelpcamp server Has started");
  });
