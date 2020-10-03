@@ -11,8 +11,8 @@ router.get("/campgrounds",(req,res)=>{
         if (err){console.log(err)}
        else{
            res.render(
-           "campgrounds/index",{anyname : allcampgrounds}); //here anyname can literally be given any name including campgrounds} 
-       }                                                   
+           "campgrounds/index",{anyname : allcampgrounds,page:'campgrounds'}); //here anyname can literally be given any name including campgrounds} 
+       }    // page is used in navbar for active nav                                               
     });
     });
     
