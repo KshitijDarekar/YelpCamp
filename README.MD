@@ -1,7 +1,8 @@
 # Yelpcamp
->A Campground Rating site that uses RESTful API
-## Overview:
->YelpCamp is a Node.js web application with RESTful routing project from the Udemy  course - The Web Developer Bootcamp by Colt Steele
+>A Campground Rating site that uses RESTful API.YelpCamp is a Node.js web application with RESTful routing project from the Udemy  course - The Web Developer Bootcamp by Colt Steele
+## Live Demo:
+[Click Here](https://yelpcamp-kshitij.herokuapp.com/) to see the live demo of the app.
+
 ## Features:
 - Authentication
 - Authorization
