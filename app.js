@@ -7,6 +7,8 @@ var LocalStrategy =require("passport-local");
 var User = require("./models/user");
 var methodOverride = require("method-override");
 var flash =require("connect-flash");
+var dotenv = require('dotenv').config(); // for managing environment variables stored in .env file
+
 
 var Campground = require("./models/campground");
 var seedDB = require("./seeds");
@@ -43,11 +45,12 @@ app.use((req,res,next)=>{
 // local mongodb setup
 //mongoose.connect("mongodb://localhost:27017/yelpcamp",{ useNewUrlParser: true, useUnifiedTopology: true });
 
-const url = process.env.DATABASEURL || "mongodb://localhost:27017/yelpcamp" ;
+const url = process.env.DATABASEURL || "mongodb://localhost:27017/yelpcamp";
 // Mongodb Atlas Setup (Cloud)
 mongoose.connect(url,
 { useNewUrlParser: true, useUnifiedTopology: true 
 }).then( ()=>{
+    console.log(url);
     console.log("Connected to DB!");
 }).catch( err=>{
     console.log("Error :",err.message);
@@ -223,7 +226,10 @@ app.use(indexRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
 
-
-app.listen(process.env.PORT,()=>{
+const port = process.env.PORT || 5000;
+const ip = process.env.IP || "0.0.0.0";
+app.listen(port,ip ,()=>{
     console.log("THe Yelpcamp server Has started");
+    console.log(`Server is running at http://${ip}:${port}`);
+
  });
